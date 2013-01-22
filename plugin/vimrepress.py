@@ -18,6 +18,9 @@ except ImportError:
     markdown = markdown_stub()
 def markdown2html(rawtext):
 	# see http://www.freewisdom.org/projects/python-markdown/Available_Extensions
+    # every run it set default encode
+    reload(sys)
+    sys.setdefaultencoding( "utf-8" )
     exts = ['meta', 'toc(marker=$TOC$)', 'def_list', 'abbr', 'footnotes', 'tables', 'codehilite', 'fenced_code']
     html = markdown.markdown(rawtext.decode('utf-8'), exts).encode('utf-8')
     return html
